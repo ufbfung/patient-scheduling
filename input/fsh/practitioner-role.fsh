@@ -68,3 +68,18 @@ This profile sets minimum expectations for the PractitionerRole resource to enab
   * during MS
     * start MS
     * end MS
+
+// Align with NDH
+// https://build.fhir.org/ig/HL7/fhir-us-ndh/StructureDefinition-ndh-PractitionerRole.html
+* specialty from http://hl7.org/fhir/us/ndh/ValueSet/IndividualAndGroupSpecialtiesVS (extensible)
+
+// --- NDH alignment: require at least ONE NDH coding, allow others ---
+* code.coding ^slicing.discriminator.type = #value
+* code.coding ^slicing.discriminator.path = "$this"
+* code.coding ^slicing.rules = #open
+
+// Require at least one NDH coding slice
+* code.coding contains 
+    ndh 1..* MS and 
+    other 0..* MS
+* code.coding[ndh] from http://hl7.org/fhir/us/ndh/ValueSet/PractitionerRoleVS (required)

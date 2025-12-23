@@ -9,10 +9,14 @@ Usage: #example
 * identifier[=].value = "1234567890"
 * active = true
 * period.start = "2020-01-01"
-* practitioner = Reference(Practitioner/doc-smith) "Dr. John Robert Smith"
-* organization = Reference(Organization/berkshire-family-medicine) "Berkshire Family Medicine"
-* code = $sct#309343006 "Physician"
-* specialty = $sct#394802001 "General medicine"
+* practitioner = Reference(JohnRobertSmithMD) "John Robert Smith, MD"
+* organization = Reference(Organization/berk-fam-practice) "Berkshire Family Medicine"
+// * code = $sct#309343006 "Physician" // consider using this as secondary
+// we prefer NDH's codesystem/valueset for alignment
+* code = http://hl7.org/fhir/us/ndh/CodeSystem/NdhPractitionerRoleCS#ph
+// * specialty = $sct#394802001 "General medicine" // prefer using this as secondary
+// we prefer NDH's codesystem/valueset for alignment
+* specialty = http://nucc.org/provider-taxonomy#207Q00000X
 * location = Reference(BerkshireFamilyMedicine) "Berkshire Family Medicine - Pittsfield"
 * telecom[0].system = #phone
 * telecom[=].value = "413-555-0123"
@@ -26,8 +30,42 @@ Usage: #example
 * availableTime.availableStartTime = "09:00:00"
 * availableTime.availableEndTime = "17:00:00"
 
+Instance: BrianLBachelderMDRole
+InstanceOf: SMARTPractitionerRole
+Description: "Emergency Medicine Physician Role"
+Usage: #example
+* identifier[0].system = "https://healthsystem.example.com/practitioner-role-directory"
+* identifier[=].value = "ROLE-12345"
+* identifier[+].system = "http://hl7.org/fhir/sid/us-npi"
+* identifier[=].value = "1356439228"
+* active = true
+* period.start = "2006-10-10"
+* practitioner = Reference(BrianLBachelderMD) "Brian L Bachelder, MD"
+* organization = Reference(Organization/PartnersPhysicianGroup) "Partners Physician Group"
+// * code = $sct#309343006 "Physician" // consider using this as secondary
+// we prefer NDH's codesystem/valueset for alignment
+* code = http://hl7.org/fhir/us/ndh/CodeSystem/NdhPractitionerRoleCS#ph
+// * specialty = $sct#394802001 "General medicine" // prefer using this as secondary
+// we prefer NDH's codesystem/valueset for alignment
+* specialty = http://nucc.org/provider-taxonomy#207P00000X // emergency medicine as primary
+* specialty = http://nucc.org/provider-taxonomy#207V00000X // obstetrics and gynecology as secondary
+* specialty = http://nucc.org/provider-taxonomy#207Q00000X // family medicine as secondary
+* location = Reference(Location/PartnersMD) "Partners MD"
+* telecom[0].system = #phone
+* telecom[=].value = "413-555-0123"
+* telecom[+].system = #email
+* telecom[=].value = "appointments@partner.example.com"
+* availableTime.daysOfWeek[0] = #mon
+* availableTime.daysOfWeek[+] = #tue
+* availableTime.daysOfWeek[+] = #wed
+* availableTime.daysOfWeek[+] = #thu
+* availableTime.daysOfWeek[+] = #fri
+* availableTime.availableStartTime = "09:00:00"
+* availableTime.availableEndTime = "17:00:00"
+
 Instance: BrianKFungPharmDRole
 InstanceOf: SMARTPractitionerRole
+Description: "Pharmacist Role"
 Usage: #example
 * identifier[+].system = "http://hl7.org/fhir/sid/us-npi"
 * identifier[=].value = "1639876139"
@@ -36,11 +74,38 @@ Usage: #example
 * practitioner = Reference(BrianKFungPharmD) "Brian K Fung, PharmD, MPH"
 * organization = Reference(Organization/haau3) "haau3"
 * code = http://hl7.org/fhir/us/ndh/CodeSystem/NdhPractitionerRoleCS#pharmacist
+* specialty = http://nucc.org/provider-taxonomy#183500000X
 * location = Reference(BerkshireFamilyMedicine) "Berkshire Family Medicine - Pittsfield"
 * telecom[0].system = #phone
 * telecom[=].value = "123-456-7891"
 * telecom[+].system = #email
 * telecom[=].value = "hello@haau3.com"
+* availableTime.daysOfWeek[0] = #mon
+* availableTime.daysOfWeek[+] = #tue
+* availableTime.daysOfWeek[+] = #wed
+* availableTime.daysOfWeek[+] = #thu
+* availableTime.daysOfWeek[+] = #fri
+* availableTime.availableStartTime = "09:00:00"
+* availableTime.availableEndTime = "17:00:00"
+
+// Nurse Practitioner
+Instance: NancyRomeroFernandezAPRNRole
+InstanceOf: SMARTPractitionerRole
+Usage: #example
+* identifier[+].system = "http://hl7.org/fhir/sid/us-npi"
+* identifier[=].value = "1932775590"
+* active = true
+* period.start = "2023-02-14"
+* practitioner = Reference(NancyRomeroFernandezAPRN) "Nancy Romero Fernandez, APRN, FNP-C, PMHNP-BC, PMHNP, MSN"
+* organization = Reference(Organization/LoyalMedicalGroup) "Loyal Medical Group"
+* code = http://hl7.org/fhir/us/ndh/CodeSystem/NdhPractitionerRoleCS#crnp
+* specialty = http://nucc.org/provider-taxonomy#363LP0808X // Nurse Practitioner - Psych/Mental Health
+* specialty = http://nucc.org/provider-taxonomy#363LF0000X // Nurse Practitioner - Family
+* location = Reference(BerkshireFamilyMedicine) "Berkshire Family Medicine - Pittsfield"
+* telecom[0].system = #phone
+* telecom[=].value = "123-456-7891"
+* telecom[+].system = #email
+* telecom[=].value = "nancy.example.com"
 * availableTime.daysOfWeek[0] = #mon
 * availableTime.daysOfWeek[+] = #tue
 * availableTime.daysOfWeek[+] = #wed

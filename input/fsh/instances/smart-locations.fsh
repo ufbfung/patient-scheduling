@@ -55,3 +55,20 @@ Usage: #example
 // means that this location ADDITIONALLY accepts virtual visits
 * physicalType.coding[0].system = "http://terminology.hl7.org/CodeSystem/location-physical-type"
 * physicalType.coding[0].code = #vi
+
+// Location: Radiology services
+Instance: OutpatientRadiologyServices
+InstanceOf: SMARTLocation
+Usage: #example
+* identifier.system = "some-system"
+* identifier.value = "radiology-1"
+* name = "Outpatient Radiology Services"
+* description = "An outpatient radiology services location"
+* telecom[0].system = #phone
+* telecom[=].value = "413-000-0000"
+* telecom[+].system = #url
+* telecom[=].value = "https://radiology.example.com"
+* address.line = "173 Elm St"
+* address.city = "Pittsfield"
+* address.state = "MA"
+* address.postalCode = "01201-7223"

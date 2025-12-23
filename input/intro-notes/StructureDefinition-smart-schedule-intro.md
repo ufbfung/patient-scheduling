@@ -4,6 +4,7 @@ The following are example usage scenarios for this profile:
 - Represent a schedule for healthcare services that is tied to a specific location
 - Represent a schedule for healthcare services that is tied to specific practitioner, regardess of location
 - Represent a schedule for healthcare services that is tied to a specific practitioner and location
+- Represent a schedule for healthcare services that is tied to a specific practitioner and visits can be either in-person at a specific location or virtual
 
 ## Mandatory and Must Support Data Elements
 

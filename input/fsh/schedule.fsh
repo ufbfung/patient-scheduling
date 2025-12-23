@@ -23,6 +23,7 @@ This profile sets minimum expectations for the Schedule resource to enable SMART
 * actor.reference MS // original
 * actor.display MS // from proposed
 * serviceType 1..* MS // from both
+* serviceType from CommonServiceTypesVS (preferred)
 
 // * extensions
 // both the original & proposed contain extensions

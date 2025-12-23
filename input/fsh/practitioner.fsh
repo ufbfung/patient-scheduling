@@ -31,3 +31,4 @@ This profile sets minimum expectations for the Practitioner resource to enable S
 * communication MS // to support communication, especially for non-english speakers
 * gender MS // for patient-preference (e.g. preference for women doctors for gynecology)
 * qualification MS // for patient preference on specialty or training (e.g. MD, DO, NP, PA)
+* qualification.code from http://hl7.org/fhir/us/ndh/ValueSet/IndividualSpecialtyAndDegreeLicenseCertificateVS (extensible)
