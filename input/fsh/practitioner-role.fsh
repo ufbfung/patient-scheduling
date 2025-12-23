@@ -34,6 +34,7 @@ This profile sets minimum expectations for the PractitionerRole resource to enab
 * practitioner MS
   * reference MS
   * display MS
+* practitioner only Reference(SMARTPractitioner)
 * organization MS
   * reference MS
   * display MS
@@ -53,6 +54,7 @@ This profile sets minimum expectations for the PractitionerRole resource to enab
 * healthcareService MS
   * reference MS
   * display MS
+* healthcareService only Reference(SMARTHealthcareService)
 * telecom MS
   * system MS
   * value MS

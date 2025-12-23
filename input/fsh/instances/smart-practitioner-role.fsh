@@ -1,6 +1,6 @@
 Alias: $sct = http://snomed.info/sct
 
-Instance: JohnRobertSmithMD
+Instance: JohnRobertSmithMDRole
 InstanceOf: SMARTPractitionerRole
 Usage: #example
 * identifier[0].system = "https://healthsystem.example.com/practitioner-role-directory"
@@ -18,6 +18,29 @@ Usage: #example
 * telecom[=].value = "413-555-0123"
 * telecom[+].system = #email
 * telecom[=].value = "appointments@berkshirefamilymedicine.example.com"
+* availableTime.daysOfWeek[0] = #mon
+* availableTime.daysOfWeek[+] = #tue
+* availableTime.daysOfWeek[+] = #wed
+* availableTime.daysOfWeek[+] = #thu
+* availableTime.daysOfWeek[+] = #fri
+* availableTime.availableStartTime = "09:00:00"
+* availableTime.availableEndTime = "17:00:00"
+
+Instance: BrianKFungPharmDRole
+InstanceOf: SMARTPractitionerRole
+Usage: #example
+* identifier[+].system = "http://hl7.org/fhir/sid/us-npi"
+* identifier[=].value = "1639876139"
+* active = true
+* period.start = "2023-02-14"
+* practitioner = Reference(BrianKFungPharmD) "Brian K Fung, PharmD, MPH"
+* organization = Reference(Organization/haau3) "haau3"
+* code = http://hl7.org/fhir/us/ndh/CodeSystem/NdhPractitionerRoleCS#pharmacist
+* location = Reference(BerkshireFamilyMedicine) "Berkshire Family Medicine - Pittsfield"
+* telecom[0].system = #phone
+* telecom[=].value = "123-456-7891"
+* telecom[+].system = #email
+* telecom[=].value = "hello@haau3.com"
 * availableTime.daysOfWeek[0] = #mon
 * availableTime.daysOfWeek[+] = #tue
 * availableTime.daysOfWeek[+] = #wed
