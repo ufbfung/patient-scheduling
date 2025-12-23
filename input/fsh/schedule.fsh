@@ -1,4 +1,39 @@
 // ===============================================================
+// Profile - SMART Schedule
+// ===============================================================
+
+Profile: SMARTSchedule
+Parent: Schedule
+Id: smart-schedule
+Title: "SMART Schedule"
+Description: """
+This profile sets minimum expectations for the Schedule resource to enable SMART Schedule Links use cases
+"""
+
+// Required by base R4 Schedule
+//* actor 1..* // for notes purposes; commented out so it doesn't impact diff
+
+// No US Core profile for Schedule in 6.1.0
+// https://hl7.org/fhir/us/core/STU6.1/
+
+// Align with SMART Schedule Link
+// https://github.com/smart-on-fhir/smart-scheduling-links/blob/master/specification.md#schedule-file
+// https://github.com/Culby/smart-scheduling-links/blob/master/specification.md#schedule-file
+// actor references location (like the original), but also the PractitionerRole
+* actor.reference MS // original
+* actor.display MS // from proposed
+* serviceType 1..* MS // from both
+
+// * extensions
+// both the original & proposed contain extensions
+// somewhat disagree with usage of extensions here in the proposed
+// serviceType can be treated as additional granularity; no extension needed
+// vaccineCode COULD be used for an interim implementation until a larger one that represents the product
+
+// Further constrain actors
+* actor only Reference(SMARTLocation or SMARTPractitionerRole or VirtualLocation or SMARTHealthcareService)
+
+// ===============================================================
 // Profile - AppointmentCoordinationSchedule
 // ===============================================================
 
